@@ -1,0 +1,18 @@
+{
+ "provider": "openrouter",
+ "model": "google/gemini-3.6-flash",
+ "result": {
+  "document_type": "invoice",
+  "currency": "INR",
+  "total_amount": 1995.0,
+  "net_pay_amount": null,
+  "amount_already_paid": null,
+  "balance_due_amount": null,
+  "due_date": null,
+  "amount_due_by_due_date": null,
+  "amount_due_after_due_date": null,
+  "document_date": "2026-01-06"
+ },
+ "input_tokens": 1490,
+ "output_tokens": 1589
+}

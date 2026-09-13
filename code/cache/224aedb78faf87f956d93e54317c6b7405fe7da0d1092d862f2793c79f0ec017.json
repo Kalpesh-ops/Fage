@@ -1,0 +1,16 @@
+{
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "result": {
+  "document_type": "receipt",
+  "currency": "USD",
+  "total_amount": 33.5,
+  "amount_due_after_due_date": null,
+  "amount_due_by_due_date": null,
+  "document_date": "2025-10-01",
+  "due_date": null,
+  "net_pay_amount": null
+ },
+ "input_tokens": 1231,
+ "output_tokens": 523
+}

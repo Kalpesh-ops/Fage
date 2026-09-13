@@ -1,0 +1,16 @@
+{
+ "provider": "openrouter",
+ "model": "google/gemini-3.6-flash",
+ "result": {
+  "document_type": "payslip",
+  "currency": "IDR",
+  "total_amount": 4365000,
+  "net_pay_amount": 4365000,
+  "due_date": null,
+  "amount_due_by_due_date": null,
+  "amount_due_after_due_date": null,
+  "document_date": "2019-08-31"
+ },
+ "input_tokens": 1394,
+ "output_tokens": 782
+}

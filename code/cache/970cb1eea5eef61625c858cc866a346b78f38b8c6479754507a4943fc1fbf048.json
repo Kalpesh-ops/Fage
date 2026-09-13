@@ -1,0 +1,18 @@
+{
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "result": {
+  "document_type": "receipt",
+  "currency": "INR",
+  "total_amount": 2854,
+  "amount_already_paid": null,
+  "amount_due_after_due_date": null,
+  "amount_due_by_due_date": null,
+  "balance_due_amount": null,
+  "document_date": "2024-09-03",
+  "due_date": null,
+  "net_pay_amount": null
+ },
+ "input_tokens": 1305,
+ "output_tokens": 686
+}

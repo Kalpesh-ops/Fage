@@ -1,0 +1,7 @@
+{
+ "provider": "openrouter",
+ "model": "google/gemini-3.6-flash",
+ "raw": "{\"amount\": 41272.0, \"currency\": \"INR\"}",
+ "input_tokens": 1400,
+ "output_tokens": 304
+}

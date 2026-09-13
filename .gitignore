@@ -1,0 +1,9 @@
+.env
+log.txt
+__pycache__/
+*.pyc
+code/evaluation/sweep_ledger.jsonl
+code/evaluation/investigations/residuals_ledger.jsonl
+code/evaluation/traces_*.json
+.venv/
+code.zip

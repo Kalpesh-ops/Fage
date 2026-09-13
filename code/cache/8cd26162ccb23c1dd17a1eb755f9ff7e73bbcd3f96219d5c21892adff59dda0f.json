@@ -1,0 +1,18 @@
+{
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "result": {
+  "document_type": "payslip",
+  "currency": "IDR",
+  "total_amount": 4365000,
+  "amount_already_paid": null,
+  "amount_due_after_due_date": null,
+  "amount_due_by_due_date": null,
+  "balance_due_amount": null,
+  "document_date": "2019-08-31",
+  "due_date": null,
+  "net_pay_amount": 4365000
+ },
+ "input_tokens": 1296,
+ "output_tokens": 1043
+}

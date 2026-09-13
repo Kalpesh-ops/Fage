@@ -1,0 +1,18 @@
+{
+ "provider": "openrouter",
+ "model": "google/gemini-3.6-flash",
+ "result": {
+  "document_type": "tax invoice",
+  "currency": "INR",
+  "total_amount": 8528,
+  "net_pay_amount": null,
+  "amount_already_paid": null,
+  "balance_due_amount": null,
+  "due_date": null,
+  "amount_due_by_due_date": null,
+  "amount_due_after_due_date": null,
+  "document_date": "2025-10-29"
+ },
+ "input_tokens": 1496,
+ "output_tokens": 710
+}

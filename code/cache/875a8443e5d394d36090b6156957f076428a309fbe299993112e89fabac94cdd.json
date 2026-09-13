@@ -1,0 +1,7 @@
+{
+ "provider": "gemini",
+ "model": "gemini-3.6-flash",
+ "raw": "{\"amount\": 393.22, \"currency\": \"INR\"}",
+ "input_tokens": 1312,
+ "output_tokens": 270
+}

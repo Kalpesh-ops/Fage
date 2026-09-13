@@ -1,0 +1,18 @@
+# Investigations
+
+Each script here tests one hypothesis about the ground truth, using the 25 public samples only. None is imported by the
+solver. Run from the repository root, e.g. `python code/evaluation/investigations/sweep.py`. Results that changed the
+solver are recorded in `../calibration.md`; the full residual write-up is `../residuals.md`.
+
+| # | Script | Hypothesis tested | Verdict | Output |
+|---|---|---|---|---|
+| 1 | `calibrate.py` | Early amount-only check: can a single forecast estimator setting (variable-spend statistic, window, same-day ordering) reproduce `amount_safe_to_pay`? | **Superseded.** Baseline matched 1/25 amounts exactly. Its grid mode was never used as the basis for a decision; replaced by the full-pipeline `sweep.py`, which scores decision fields too. | stdout |
+| 2 | `debug_user.py` | Diagnostic, not a hypothesis: print every projected flow and the balance path for one sample user. | **Tool.** Used to find structural gaps later fixed: scheduled salary rows must extend the salary series (request_01), weekly gig payouts must not be projected (request_10), a moved payday shifts later cycles (request_07). | stdout |
+| 3 | `sweep.py` | How far should monthly obligations be projected? Flat day window (78–90), N calendar-month steps from the last occurrence, or the request month + N−1 calendar months, each also tried on income. | **Calendar-month rule adopted; steps-from-last rejected.** `calendar_months N=3` scores 147 (status 23, method 24, plan 23, earliest 22), identical in every cell on 25 samples and 250 requests to the old fitted 82-day window. Re-run after the full-payment wording change: both score 146 (request_09's explanation is now an accepted miss), still tied cell for cell. `steps_from_last N=3/4` scores 125, the same as no cap. Applying the horizon to income changes nothing. | stdout |
+| 4 | `residuals.py` | The safe-amount level error is small and mechanical: a rounding rule, an inclusive/exclusive window boundary, or one missing or double-counted ledger term. | **Rejected.** Residual sign is mixed (14 under, 7 over). Our binding day is the closest-match day in 16/21. No single term or ±1 occurrence matches. No rounding mode moves exact matches above 4–5/25. | `residuals_data.md` |
+| 5 | `residuals_deep.py` | The error sits in the estimated (variable, varying-amount) terms, not the fixed ones. | **Confirmed.** The fractional part of truth's deduction equals our fixed terms net of income in 20/21. Truth's estimated terms are whole units (IDR hundreds), but range 0.82–1.40× ours. | `residuals_deep_data.md` |
+| 6 | `residuals_decomp.py` | Truth's estimated terms are one shared rounded history statistic (mean, median, last, min, max, trailing mean) with each series' occurrence count shifted by −1/0/+1. | **Rejected.** Exact decompositions for only 10/21, with zero for the 7 digit-rich IDR/INR samples. EUR "solutions" are combinatorial noise (52 for one sample); no pattern recurs. | `residuals_decomp_data.md` |
+| 7 | `residuals_pool.py` | Rotating-description categories (groceries, transport, dining) are pools that should be projected as a per-day spend rate over the observed span, not as occurrences. | **Rejected** (classifier kept as a finding). The data-driven classifier cleanly separates pools (top description share 0.15–0.38) from series (1.00). But across 32 variants the truth/ours ratio spread does not collapse: stdev 0.133 → 0.120 at best, range 0.82–1.31, within-5% 11 → at most 10, and 4 samples get worse. | `residuals_pool_data.md` |
+
+Checks run inline rather than as scripts, with results in `../calibration.md`: request_08 under `calendar_months=3` vs
+the 82-day window (identical), and binding-day offsets across samples and evaluation requests.
